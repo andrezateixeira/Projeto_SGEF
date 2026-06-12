@@ -40,8 +40,17 @@ char* validarCadastroProduto(
         return "ERRO: categoria invalida";
     }
 
+	db.codigos[db.qtdProdutos] = codigo;
+    strcpy(db.nomes[db.qtdProdutos], nome);
+    db.precos[db.qtdProdutos] = preco;
+    db.quantidades[db.qtdProdutos] = quantidade;
+    db.categorias[db.qtdProdutos] = categoria;
+    db.qtdProdutos++;
+
     return "Cadastro realizado com sucesso";
 }
+
+
 
 
 
