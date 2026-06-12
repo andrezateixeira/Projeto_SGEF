@@ -1,8 +1,8 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
-
 #include "database.h"
 
+int buscarIndiceProduto(int codigo);
 char* validarCadastroProduto(
     int codigo,
     char nome[],

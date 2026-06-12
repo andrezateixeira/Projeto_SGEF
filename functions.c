@@ -5,6 +5,16 @@
 
 int i;
 
+int buscarIndiceProduto(int codigo) {
+    int i;
+    for (i = 0; i < db.qtdProdutos; i++) {
+        if (db.codigos[i] == codigo) {
+            return i; 
+        }
+    }
+    return -1; 
+}
+
 char* validarCadastroProduto(
     int codigo,
     char nome[],
@@ -67,14 +77,8 @@ void mostrarProdutos() {
 }
 
 char* excluirProduto(int codigo) {
-    int i, posicao = -1;
-    
-    for (i = 0; i < db.qtdProdutos; i++) {
-        if (db.codigos[i] == codigo) {
-            posicao = i;
-            break;
-        }
-    }
+    int i;
+    int posicao = buscarIndiceProduto(codigo);
     
     if (posicao == -1) {
         return "ERRO: Produto nao encontrado";
