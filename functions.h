@@ -14,7 +14,7 @@ char* validarCadastroProduto(
 );
 
 void mostrarProdutos(void);
-
+char* excluirProduto(int codigo);
 
 #endif
 
