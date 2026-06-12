@@ -4,4 +4,8 @@
 
 EstoqueDB db;
 
+void stub_inicializarDB(void) {
+    db.qtdProdutos = 0;
+}
+
 
