@@ -13,6 +13,7 @@ char* validarCadastroProduto(
     int qtdProdutos
 );
 
+void mostrarProdutos(void);
 
 #endif
 
