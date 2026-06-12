@@ -66,5 +66,29 @@ void mostrarProdutos() {
     }
 }
 
-
-
+char* excluirProduto(int codigo) {
+    int i, posicao = -1;
+    
+    for (i = 0; i < db.qtdProdutos; i++) {
+        if (db.codigos[i] == codigo) {
+            posicao = i;
+            break;
+        }
+    }
+    
+    if (posicao == -1) {
+        return "ERRO: Produto nao encontrado";
+    }
+    
+    for (i = posicao; i < db.qtdProdutos - 1; i++) {
+        db.codigos[i] = db.codigos[i + 1];
+        strcpy(db.nomes[i], db.nomes[i + 1]);
+        db.precos[i] = db.precos[i + 1];
+        db.quantidades[i] = db.quantidades[i + 1];
+        db.categorias[i] = db.categorias[i + 1];
+    }
+    
+    db.qtdProdutos--;
+    
+    return "Produto excluido com sucesso";
+}
