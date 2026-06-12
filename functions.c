@@ -50,7 +50,21 @@ char* validarCadastroProduto(
     return "Cadastro realizado com sucesso";
 }
 
-
+void mostrarProdutos() {
+    if(db.qtdProdutos == 0) {
+        printf("Nenhum produto cadastrado.\n");
+    } else {
+        printf("\nPRODUTOS CADASTRADOS:\n");
+        for(i = 0; i < db.qtdProdutos; i++) {
+            printf("\nProduto %d\n", i + 1);
+            printf("Codigo: %d\n", db.codigos[i]);
+            printf("Nome: %s\n", db.nomes[i]);
+            printf("Preco: R$ %.2f\n", db.precos[i]);
+            printf("Quantidade: %d\n", db.quantidades[i]);
+            printf("Categoria: %c\n", db.categorias[i]);
+        }
+    }
+}
 
 
 
