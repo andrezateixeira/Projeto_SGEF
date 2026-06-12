@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "database.h"
+#include "functions.h"
 
 int sistemaGEF() {
     int opcao;
@@ -24,6 +25,10 @@ int sistemaGEF() {
                 printf("Voce saiu do sistema.\n");
                 break;
             case 1: {
+            	if(db.qtdProdutos >= MAX_PRODUTOS) {
+                    printf("Limite de produtos atingido!\n");
+                    break;
+                }          	
                 int codigoDigitado;
                 char nomeDigitado[30];
                 float precoDigitado;
@@ -38,12 +43,13 @@ int sistemaGEF() {
                 scanf("%f", &precoDigitado);
                 printf("Quantidade: ");
                 scanf("%d", &quantidadeDigitada);
-                printf("Categoria (A, B ou C): ");
-                scanf(" %c", &categoriaDigitada);
+                printf("Categoria (A = Alimento, C = Casa, E= Eletrônicos, H = Higiene ou M = Moda ): ");
+                scanf(" %c", &categoriaDigitada);                              
                 
-				validarCadastroProduto(codigoDigitado, nomeDigitado, precoDigitado, quantidadeDigitada, categoriaDigitada);
-                break;
-            }
+                resultado = validarCadastroProduto(codigoDigitado, nomeDigitado, precoDigitado, quantidadeDigitada, categoriaDigitada,db.codigos, db.qtdProdutos);
+                printf("%s\n", resultado);         
+            	 break;
+            	}
             case 2:
                 mostrarProdutos();
                 break;
@@ -71,7 +77,7 @@ int sistemaGEF() {
                 break;
             default:
                 printf("Opcao invalida!\n");
-        }
+    	}
     } while(opcao != 0);
     
     return 0;

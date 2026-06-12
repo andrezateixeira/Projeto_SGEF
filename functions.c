@@ -3,6 +3,8 @@
 #include "functions.h"
 #include "database.h"
 
+int i;
+
 char* validarCadastroProduto(
     int codigo,
     char nome[],
@@ -34,7 +36,7 @@ char* validarCadastroProduto(
         return "ERRO: quantidade invalida";
     }
 
-    if (categoria != 'A' && categoria != 'H' && categoria != 'M' && categoria != 'C' && categoria != 'E') {
+    if (categoria != 'A' && categoria != 'C' && categoria != 'E' && categoria != 'H' && categoria != 'M') {
         return "ERRO: categoria invalida";
     }
 
