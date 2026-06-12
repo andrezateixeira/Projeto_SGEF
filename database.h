@@ -14,6 +14,5 @@ typedef struct {
 
 extern EstoqueDB db;
 
-
 #endif
 
