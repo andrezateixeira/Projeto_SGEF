@@ -112,3 +112,19 @@ char* validarCompra(int codigo, int quantidadeDesejada) {
     
     return "Compra realizada com sucesso";
 }
+
+char* entradaEstoque(int codigo, int quantidadeEntrada) {
+    if (quantidadeEntrada <= 0) {
+        return "ERRO: Quantidade invalida para entrada";
+    }
+    
+    int posicao = buscarIndiceProduto(codigo);
+    
+    if (posicao == -1) {
+        return "ERRO: Produto nao encontrado";
+    }
+    
+    db.quantidades[posicao] += quantidadeEntrada;
+    
+    return "Entrada realizada com sucesso";
+}
