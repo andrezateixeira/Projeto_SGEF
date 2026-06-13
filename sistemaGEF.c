@@ -64,7 +64,8 @@ int sistemaGEF() {
                 scanf("%d", &codigo);
                 printf("Digite a quantidade desejada: ");
                 scanf("%d", &quantidade);
-				validarCompra(codigo, quantidade);
+				resultado = validarCompra(codigo, quantidade);
+                printf("%s\n", resultado);
                 break;
             case 5:
                 printf("Digite o codigo do produto: ");
