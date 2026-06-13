@@ -56,7 +56,7 @@ int sistemaGEF() {
             case 3:
                 printf("Digite o codigo do produto a excluir: ");
                 scanf("%d", &codigo);
-                resultado = excluirProduto(codigo);
+				resultado = excluirProduto(codigo);
                 printf("%s\n", resultado);
                 break;
             case 4:

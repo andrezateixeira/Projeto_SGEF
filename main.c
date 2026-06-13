@@ -3,7 +3,7 @@
 #include "database.h"
 
 int sistemaGEF(void);
-int casosTestes(void);
+//int casosTestes(void);
 
 int main(int argc, char *argv[]) {
     int opcao;
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
                 sistemaGEF();
                 break;
             case 2:
-                casosTestes();
+                //casosTestes();
                 break;
             default:
                 printf("Opcao invalida!\n");

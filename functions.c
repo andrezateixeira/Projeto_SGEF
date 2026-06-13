@@ -96,3 +96,19 @@ char* excluirProduto(int codigo) {
     
     return "Produto excluido com sucesso";
 }
+
+char* validarCompra(int codigo, int quantidadeDesejada) {
+    int posicao = buscarIndiceProduto(codigo);
+    
+    if (posicao == -1) {
+        return "ERRO: Produto nao encontrado";
+    }
+    
+    if (db.quantidades[posicao] < quantidadeDesejada) {
+        return "ERRO: Quantidade insuficiente em estoque";
+    }
+    
+    db.quantidades[posicao] -= quantidadeDesejada;
+    
+    return "Compra realizada com sucesso";
+}
