@@ -72,7 +72,8 @@ int sistemaGEF() {
                 scanf("%d", &codigo);
                 printf("Digite a quantidade de entrada: ");
                 scanf("%d", &quantidade);
-				entradaEstoque(codigo, quantidade);
+				resultado = entradaEstoque(codigo, quantidade);
+                printf("%s\n", resultado);
                 break;  
             case 6:
                 mostrarProdutosEstoqueBaixo(10);
