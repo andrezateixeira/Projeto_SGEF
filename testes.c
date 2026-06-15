@@ -29,9 +29,22 @@ MU_TEST(test_codigo_duplicado) {
     );
 }
 
+MU_TEST(test_preco_negativo) {
+    Database db = criarDatabaseStubVazio();
+    Produto p = {1, "Farinha", -10, 25, 'A'};
+
+    char *resultado = validarCadastroProduto(&db, p);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: preco invalido") == 0,
+        "Preco negativo deveria ser invalido"
+    );
+}
+
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_codigo_negativo);
 	MU_RUN_TEST(test_codigo_duplicado);
+	MU_RUN_TEST(test_preco_negativo);
 }
 
 int casosTestes(void) {
