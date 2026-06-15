@@ -5,6 +5,38 @@
 #include "database.h"
 #include "database_stub.h"
 
+MU_TEST(test_buscar_produto_existente){
+	Database db = criarDatabaseStubComUmProduto();
+	
+	int resultado = buscarIndiceProduto(&db, 11);
+	
+	mu_assert(
+	resultado == 0,
+	"Produto existente deveria retornar indice 0");
+}
+
+MU_TEST(test_buscar_produto_inexistente){
+	Database db = criarDatabaseStubComUmProduto();
+	
+	int resultado = buscarIndiceProduto(&db, 99);
+	
+	mu_assert(
+	resultado == -1, 
+	"Produto inexistente deveria retornar -1" 
+	);
+}
+
+MU_TEST(test_excluir_produto_existente){
+	Database db = CriarDatabaseStubComUmProduto();
+	
+	int resultado = excluirProduto(&db, 11);
+	
+	mu_assert(
+	resultado == 0,
+	"Produto existente deveria ser excluido com sucesso"
+	);
+}
+
 MU_TEST(test_codigo_negativo) {
     Database db = criarDatabaseStubVazio();
     Produto p = {-5, "Arroz", 10, 1, 'A'};
@@ -91,6 +123,8 @@ MU_TEST(test_cadastro_valido) {
 }
 
 MU_TEST_SUITE(test_suite) {
+	MU_RUN_TEST(test_buscar_produto_existente);
+	MU_RUN_TEST(test_buscar_produto_inexistente);
 	MU_RUN_TEST(test_codigo_negativo);
 	MU_RUN_TEST(test_codigo_duplicado);
 	MU_RUN_TEST(test_nome_invalido);
