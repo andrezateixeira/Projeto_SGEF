@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o sistemaGEF.o database.o functions.o
-LINKOBJ  = main.o sistemaGEF.o database.o functions.o
+OBJ      = database.o functions.o main.o sistemaGEF.o testes.o database_stub.o
+LINKOBJ  = database.o functions.o main.o sistemaGEF.o testes.o database_stub.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -24,14 +24,20 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
 
+database.o: database.c
+	$(CC) -c database.c -o database.o $(CFLAGS)
+
+functions.o: functions.c
+	$(CC) -c functions.c -o functions.o $(CFLAGS)
+
 main.o: main.c
 	$(CC) -c main.c -o main.o $(CFLAGS)
 
 sistemaGEF.o: sistemaGEF.c
 	$(CC) -c sistemaGEF.c -o sistemaGEF.o $(CFLAGS)
 
-database.o: database.c
-	$(CC) -c database.c -o database.o $(CFLAGS)
+testes.o: testes.c
+	$(CC) -c testes.c -o testes.o $(CFLAGS)
 
-functions.o: functions.c
-	$(CC) -c functions.c -o functions.o $(CFLAGS)
+database_stub.o: database_stub.c
+	$(CC) -c database_stub.c -o database_stub.o $(CFLAGS)

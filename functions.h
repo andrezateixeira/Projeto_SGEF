@@ -9,6 +9,7 @@
  * @version 1.0
  *
  */
+
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -24,6 +25,7 @@
  * @note Função essencial para validações de existência de produtos.
  */
 int buscarIndiceProduto(Database *db, int codigo);
+
 /**
  * @brief Valida os dados para o cadastro de um novo produto.
  *
@@ -34,6 +36,7 @@ int buscarIndiceProduto(Database *db, int codigo);
  * @note Verifica critérios como código negativo, duplicado, nome vazio e preços inválidos.
  */
 char* validarCadastroProduto(Database *db, Produto produto);
+
 /**
  * @brief Exibe na tela a listagem de todos os produtos cadastrados.
  *
@@ -43,6 +46,7 @@ char* validarCadastroProduto(Database *db, Produto produto);
  * @note Mostra formatado o código, nome, quantidade e preço de cada item.
  */
 void mostrarProdutos(Database *db);
+
 /**
  * @brief Realiza a exclusão lógica ou física de um produto do sistema.
  *
@@ -53,6 +57,7 @@ void mostrarProdutos(Database *db);
  * @note Caso o produto não exista, deve retornar um erro específico.
  */
 char* excluirProduto(Database *db, int codigo);
+
 /**
  * @brief Valida se uma operação de compra pode ser realizada.
  *
@@ -63,7 +68,8 @@ char* excluirProduto(Database *db, int codigo);
  *
  * @note Verifica se o produto existe e se há estoque suficiente antes de abater.
  */
-char* validarCompra(Database *db,int codigo,int quantidadeDesejada);
+char* validarCompra(Database *db, int codigo, int quantidadeDesejada);
+
 /**
  * @brief Realiza a entrada/reposição de estoque de um produto existente.
  *
@@ -74,7 +80,8 @@ char* validarCompra(Database *db,int codigo,int quantidadeDesejada);
  *
  * @note A quantidade de entrada deve ser estritamente positiva.
  */
-char* entradaEstoque(Database *db, int codigo,int quantidadeEntrada);
+char* entradaEstoque(Database *db, int codigo, int quantidadeEntrada);
+
 /**
  * @brief Exibe uma listagem com os produtos que estão abaixo do limite estipulado.
  *

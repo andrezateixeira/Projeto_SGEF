@@ -1,27 +1,21 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#define MAX_PRODUTOS 30
+#define MAX_PRODUTOS 20
 
 typedef struct {
-    int codigos[MAX_PRODUTOS];
-    char nomes[MAX_PRODUTOS][30];
-    float precos[MAX_PRODUTOS];
-    int quantidades[MAX_PRODUTOS];
-    char categorias[MAX_PRODUTOS];
-    int qtdProdutos;
-} EstoqueDB;
+    int codigo;
+    char nome[30];
+    float preco;
+    int quantidade;
+    char categoria;
+} Produto;
 
-extern EstoqueDB db;
-int stub_buscar_indice_produto(int codigo);
-int stub_codigo_invalido(int codigo);
-int stub_codigo_duplicado(int codigo);
-int stub_nome_invalido(char nome[]);
-int stub_preco_invalido(float preco);
-int stub_quantidade_invalido(int quantidade);
-int stub_categoria_invalido(char categoria);
-int stub_entrada_estoque(int codigo, int quantidadeEntrada);
-int stub_mostrar_produtos_estoque_baixo(int limite);
+typedef struct {
+    Produto produtos[MAX_PRODUTOS];
+    int qtdProdutos;
+} Database;
+
+Database criarDatabase(void);
 
 #endif
-

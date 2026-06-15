@@ -1,9 +1,20 @@
+/**
+ * @file main.c
+ * @brief Biblioteca simples de operações matemáticas.
+ *
+ * @details Este arquivo contém funções básicas para realizar soma e divisão de dois números.
+ * @author Malu
+ * @date 2026
+ * @version 1.0
+ *
+ */
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include "database.h"
 
 int sistemaGEF(void);
-//int casosTestes(void);
+int casosTestes(void);
 
 /**
  * @brief Função principal do programa.
@@ -36,7 +47,7 @@ int main(int argc, char *argv[]) {
                 sistemaGEF();
                 break;
             case 2:
-                //casosTestes();
+                casosTestes();
                 break;
             default:
                 printf("Opcao invalida!\n");
