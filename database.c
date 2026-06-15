@@ -16,4 +16,8 @@ void stub_inicializarDB(void) {
     db.qtdProdutos = 0;
 }
 
-
+int stub_buscar_indice_produto(int codigo) {
+    if (codigo == 1) return 0;  
+    if (codigo == 2) return 1;   
+    return -1;                    
+}
