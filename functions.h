@@ -17,6 +17,7 @@ void mostrarProdutos(void);
 char* excluirProduto(int codigo);
 char* validarCompra(int codigo, int quantidadeDesejada);
 char* entradaEstoque(int codigo, int quantidadeEntrada);
+void mostrarProdutosEstoqueBaixo(int limite);
 
 #endif
 
