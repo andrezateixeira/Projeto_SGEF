@@ -116,6 +116,14 @@ void mostrarProdutos() {
     }
 }
 
+/**
+ * @brief Realiza a soma de dois números inteiros
+ *
+ * @param codigo O primeiro valor inteiro
+ * @return char* O resultado da soma entre @v1 e @v2
+ *
+ * @note Os parâmetros podem ser positivos ou negativos
+ */
 char* excluirProduto(int codigo) {
     int i;
     int posicao = buscarIndiceProduto(codigo);
@@ -137,6 +145,16 @@ char* excluirProduto(int codigo) {
     return "Produto excluido com sucesso";
 }
 
+/**
+ * @brief Realiza a soma de dois números inteiros
+ *
+ * @param codigo O primeiro valor inteiro
+ * @param quantidadeDesejada O segundo valor inteiro
+ * @return char* O resultado da soma entre @v1 e @v2
+ *
+ * @note Os parâmetros podem ser positivos ou negativos
+ */
+
 char* validarCompra(int codigo, int quantidadeDesejada) {
     int posicao = buscarIndiceProduto(codigo);
     
@@ -153,6 +171,15 @@ char* validarCompra(int codigo, int quantidadeDesejada) {
     return "Compra realizada com sucesso";
 }
 
+/**
+ * @brief Realiza a soma de dois números inteiros
+ *
+ * @param codigo O primeiro valor inteiro
+ * @param quantidadeEntrada O segundo valor inteiro
+ * @return char* O resultado da soma entre @v1 e @v2
+ *
+ * @note Os parâmetros podem ser positivos ou negativos
+ */
 char* entradaEstoque(int codigo, int quantidadeEntrada) {
     if (quantidadeEntrada <= 0) {
         return "ERRO: Quantidade invalida para entrada";
@@ -169,6 +196,13 @@ char* entradaEstoque(int codigo, int quantidadeEntrada) {
     return "Entrada realizada com sucesso";
 }
 
+/**
+ * @brief Realiza a soma de dois números inteiros
+ *
+ * @param limite O primeiro valor inteiro
+ *
+ * @note Os parâmetros podem ser positivos ou negativos
+ */
 void mostrarProdutosEstoqueBaixo(int limite) {
     int encontrou = 0;
     printf("\n=== PRODUTOS COM ESTOQUE BAIXO (menor que %d) ===\n", limite);
