@@ -37,6 +37,17 @@ MU_TEST(test_excluir_produto_existente){
 	);
 }
 
+MU_TEST(test_excluir_produto_inexistente) {
+    Database db = criarDatabaseStubComUmProduto();
+    
+    int resultado = excluirProduto(&db, 99);
+    
+    mu_assert(
+        resultado == -1,
+        "Tentativa de excluir produto inexistente deveria retornar nao encontrado"
+    );
+}
+
 MU_TEST(test_codigo_negativo) {
     Database db = criarDatabaseStubVazio();
     Produto p = {-5, "Arroz", 10, 1, 'A'};
@@ -125,6 +136,8 @@ MU_TEST(test_cadastro_valido) {
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
 	MU_RUN_TEST(test_buscar_produto_inexistente);
+	MU_RUN_TEST(test_excluir_produto_existente);
+	MU_RUN_TEST(test_excluir_produto_inexistente);
 	MU_RUN_TEST(test_codigo_negativo);
 	MU_RUN_TEST(test_codigo_duplicado);
 	MU_RUN_TEST(test_nome_invalido);
