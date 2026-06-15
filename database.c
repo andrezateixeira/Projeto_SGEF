@@ -42,3 +42,8 @@ int stub_preco_invalido(float preco) {
     if (preco <= 0) return 1;
     return 0;
 }
+
+int stub_quantidade_invalido(int quantidade) {
+    if (quantidade < 0) return 1;
+    return 0;
+}
