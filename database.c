@@ -21,3 +21,8 @@ int stub_buscar_indice_produto(int codigo) {
     if (codigo == 2) return 1;   
     return -1;                    
 }
+
+int stub_codigo_invalido(int codigo) {
+    if (codigo < 0) return 1;
+    return 0;
+}

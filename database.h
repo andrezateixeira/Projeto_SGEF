@@ -14,6 +14,7 @@ typedef struct {
 
 extern EstoqueDB db;
 int stub_buscar_indice_produto(int codigo);
+int stub_codigo_invalido(int codigo);
 
 #endif
 
