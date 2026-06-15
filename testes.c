@@ -41,10 +41,23 @@ MU_TEST(test_preco_negativo) {
     );
 }
 
+MU_TEST(test_quantidade_negativa) {
+    Database db = criarDatabaseStubVazio();
+    Produto p = {1, "Jarro", 10, -6, 'C'};
+
+    char *resultado = validarCadastroProduto(&db, p);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: quantidade invalida") == 0,
+        "Quantidade negativa deveria ser invalido"
+    );
+}
+
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_codigo_negativo);
 	MU_RUN_TEST(test_codigo_duplicado);
 	MU_RUN_TEST(test_preco_negativo);
+	MU_RUN_TEST(test_quantidade_negativa);
 }
 
 int casosTestes(void) {
