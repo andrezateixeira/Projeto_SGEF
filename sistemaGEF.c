@@ -29,6 +29,8 @@ int sistemaGEF() {
     int codigo, quantidade;
     char *resultado;
     
+    Database db = criarDatabase();
+    
     do {
         printf("\nSISTEMA DE ESTOQUE\n");
         printf("0 - Sair\n");
@@ -45,59 +47,56 @@ int sistemaGEF() {
             case 0:
                 printf("Voce saiu do sistema.\n");
                 break;
-            case 1: {
-            	if(db.qtdProdutos >= MAX_PRODUTOS) {
-                    printf("Limite de produtos atingido!\n");
-                    break;
-                }          	
-                int codigoDigitado;
-                char nomeDigitado[30];
-                float precoDigitado;
-                int quantidadeDigitada;
-                char categoriaDigitada;
-                
-                printf("Codigo: ");
-                scanf("%d", &codigoDigitado);
-                printf("Nome: ");
-                scanf("%29s", nomeDigitado);
-                printf("Preco: ");
-                scanf("%f", &precoDigitado);
-                printf("Quantidade: ");
-                scanf("%d", &quantidadeDigitada);
-                printf("Categoria (A = Alimento, C = Casa, E= Eletrônicos, H = Higiene ou M = Moda ): ");
-                scanf(" %c", &categoriaDigitada);                              
-                
-                resultado = validarCadastroProduto(codigoDigitado, nomeDigitado, precoDigitado, quantidadeDigitada, categoriaDigitada,db.codigos, db.qtdProdutos);
-                printf("%s\n", resultado);         
-            	 break;
-            	}
+            case 1:
+			{
+    			Produto produto;
+
+    			printf("Codigo: ");
+    			scanf("%d", &produto.codigo);
+    			printf("Nome: ");
+    			scanf("%29s", produto.nome);
+    			printf("Preco: ");
+    			scanf("%f", &produto.preco);
+   				printf("Quantidade: ");
+    			scanf("%d", &produto.quantidade);
+    			printf("Categoria (A = Alimento, C = Casa, E= Eletrônicos, H = Higiene ou M = Moda ): ");
+    			scanf(" %c", &produto.categoria);
+
+    			resultado = validarCadastroProduto(&db, produto);
+
+    			printf("%s\n", resultado);
+
+    			break;
+			}
             case 2:
-                mostrarProdutos();
-                break;
+    			mostrarProdutos(&db);
+    			break;
             case 3:
-                printf("Digite o codigo do produto a excluir: ");
-                scanf("%d", &codigo);
-				resultado = excluirProduto(codigo);
-                printf("%s\n", resultado);
-                break;
+            	printf("Digite o codigo do produto: ");
+    			scanf("%d", &codigo);
+    			resultado = excluirProduto(&db, codigo);
+    			printf("%s\n", resultado);
+    			break;
             case 4:
                 printf("Digite o codigo do produto: ");
                 scanf("%d", &codigo);
                 printf("Digite a quantidade desejada: ");
                 scanf("%d", &quantidade);
-				resultado = validarCompra(codigo, quantidade);
-                printf("%s\n", resultado);
+				resultado =
+    			validarCompra(&db, codigo, quantidade);
+    			printf("%s\n", resultado);
                 break;
             case 5:
                 printf("Digite o codigo do produto: ");
                 scanf("%d", &codigo);
                 printf("Digite a quantidade de entrada: ");
                 scanf("%d", &quantidade);
-				resultado = entradaEstoque(codigo, quantidade);
+				resultado =
+    			entradaEstoque(&db, codigo, quantidade);
                 printf("%s\n", resultado);
                 break;  
             case 6:
-                mostrarProdutosEstoqueBaixo(10);
+                mostrarProdutosEstoqueBaixo(&db, 10);
                 break;
             default:
                 printf("Opcao invalida!\n");

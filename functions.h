@@ -1,23 +1,14 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
+
 #include "database.h"
 
-int buscarIndiceProduto(int codigo);
-char* validarCadastroProduto(
-    int codigo,
-    char nome[],
-    float preco,
-    int quantidade,
-    char categoria,
-    int codigos[],
-    int qtdProdutos
-);
-
-void mostrarProdutos(void);
-char* excluirProduto(int codigo);
-char* validarCompra(int codigo, int quantidadeDesejada);
-char* entradaEstoque(int codigo, int quantidadeEntrada);
-void mostrarProdutosEstoqueBaixo(int limite);
+int buscarIndiceProduto(Database *db, int codigo);
+char* validarCadastroProduto(Database *db, Produto produto);
+void mostrarProdutos(Database *db);
+char* excluirProduto(Database *db, int codigo);
+char* validarCompra(Database *db,int codigo,int quantidadeDesejada);
+char* entradaEstoque(Database *db, int codigo,int quantidadeEntrada);
+void mostrarProdutosEstoqueBaixo(Database *db, int limite);
 
 #endif
-
