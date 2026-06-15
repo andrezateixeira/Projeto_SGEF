@@ -66,7 +66,29 @@ MU_TEST(test_quantidade_negativa) {
     );
 }
 
+MU_TEST(test_categoria_invalida) {
+    Database db = criarDatabaseStubVazio();
+    Produto p = {7, "Camisa", 15, 13, 'Z'};
 
+    char *resultado = validarCadastroProduto(&db, p);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: categoria invalida") == 0,
+        "Categoria inválida deveria ser rejeitada"
+    );
+}
+
+MU_TEST(test_cadastro_valido) {
+    Database db = criarDatabaseStubVazio();
+    Produto p = {1, "Arroz", 10, 1, 'A'};
+    
+    char *resultado = validarCadastroProduto(&db, p);
+
+    mu_assert(
+        strcmp(resultado, "Cadastro realizado com sucesso") == 0,
+        "Cadastro deveria ser aceito"
+    );
+}
 
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_codigo_negativo);
@@ -74,6 +96,8 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_nome_invalido);
 	MU_RUN_TEST(test_preco_negativo);
 	MU_RUN_TEST(test_quantidade_negativa);
+	MU_RUN_TEST(test_categoria_invalida);
+	MU_RUN_TEST(test_cadastro_valido);
 }
 
 int casosTestes(void) {
