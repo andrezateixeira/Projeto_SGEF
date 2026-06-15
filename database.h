@@ -16,6 +16,7 @@ extern EstoqueDB db;
 int stub_buscar_indice_produto(int codigo);
 int stub_codigo_invalido(int codigo);
 int stub_codigo_duplicado(int codigo);
+int stub_nome_invalido(char nome[]);
 
 #endif
 

@@ -32,3 +32,8 @@ int stub_codigo_duplicado(int codigo) {
     if (codigo == 2) return 1;  
     return 0;
 }
+
+int stub_nome_invalido(char nome[]) {
+    if (strlen(nome) == 0) return 1;
+    return 0;
+}
