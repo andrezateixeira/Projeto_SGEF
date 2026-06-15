@@ -16,4 +16,54 @@ void stub_inicializarDB(void) {
     db.qtdProdutos = 0;
 }
 
+int stub_buscar_indice_produto(int codigo) {
+    if (codigo == 1) return 0;  
+    if (codigo == 2) return 1;   
+    return -1;                    
+}
 
+int stub_codigo_invalido(int codigo) {
+    if (codigo < 0) return 1;
+    return 0;
+}
+
+int stub_codigo_duplicado(int codigo) {
+    if (codigo == 1) return 1;  
+    if (codigo == 2) return 1;  
+    return 0;
+}
+
+int stub_nome_invalido(char nome[]) {
+    if (strlen(nome) == 0) return 1;
+    return 0;
+}
+
+int stub_preco_invalido(float preco) {
+    if (preco <= 0) return 1;
+    return 0;
+}
+
+int stub_quantidade_invalido(int quantidade) {
+    if (quantidade < 0) return 1;
+    return 0;
+}
+
+int stub_categoria_invalido(char categoria) {
+    if (categoria == 'A' || categoria == 'C' || categoria == 'E' || categoria == 'H' || categoria == 'M') {
+        return 0;  
+    return 1;
+}
+
+int stub_entrada_estoque(int codigo, int quantidadeEntrada) {
+    if (quantidadeEntrada <= 0) return 1;
+    if (codigo == 999) return 1; 
+    if (codigo < 0) return 1;     
+    
+    return 0;
+}
+
+int stub_mostrar_produtos_estoque_baixo(int limite) {
+    if (limite <= 0) return 0;     
+    if (limite > 10) return 1;     
+    return 0;                      
+}

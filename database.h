@@ -13,6 +13,15 @@ typedef struct {
 } EstoqueDB;
 
 extern EstoqueDB db;
+int stub_buscar_indice_produto(int codigo);
+int stub_codigo_invalido(int codigo);
+int stub_codigo_duplicado(int codigo);
+int stub_nome_invalido(char nome[]);
+int stub_preco_invalido(float preco);
+int stub_quantidade_invalido(int quantidade);
+int stub_categoria_invalido(char categoria);
+int stub_entrada_estoque(int codigo, int quantidadeEntrada);
+int stub_mostrar_produtos_estoque_baixo(int limite);
 
 #endif
 
