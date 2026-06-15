@@ -95,6 +95,11 @@ char* validarCadastroProduto(
     return "Cadastro realizado com sucesso";
 }
 
+/**
+ * @brief Realiza a soma de dois números inteiros
+ *
+ * @note Os parâmetros podem ser positivos ou negativos
+ */
 void mostrarProdutos() {
     if(db.qtdProdutos == 0) {
         printf("Nenhum produto cadastrado.\n");
