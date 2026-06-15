@@ -1,3 +1,14 @@
+/**
+ * @file functions.c
+ * @brief Biblioteca simples de operações matemáticas.
+ *
+ * @details Este arquivo contém funções básicas para realizar soma e divisão de dois números.
+ * @author Malu
+ * @date 2026
+ * @version 1.0
+ *
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include "functions.h"
@@ -5,6 +16,15 @@
 
 int i;
 
+/**
+ * @brief Realiza a soma de dois números inteiros
+ *
+ * @param codigo O primeiro valor inteiro
+ * @return int O resultado da soma entre @v1 e @v2
+ *
+ * @note Os parâmetros podem ser positivos ou negativos
+ */
+ 
 int buscarIndiceProduto(int codigo) {
     int i;
     for (i = 0; i < db.qtdProdutos; i++) {
