@@ -35,6 +35,21 @@ int buscarIndiceProduto(int codigo) {
     return -1; 
 }
 
+/**
+ * @brief Realiza a soma de dois números inteiros
+ *
+ * @param codigo O primeiro valor inteiro
+ * @param nome O segundo valor inteiro
+ * @param preco O primeiro valor inteiro
+ * @param quantidade O segundo valor inteiro
+ * @param categoria O primeiro valor inteiro
+ * @param codigos O segundo valor inteiro
+ * @param qtdProdutos O primeiro valor inteiro
+ * @return char* O resultado da soma entre @v1 e @v2
+ *
+ * @note Os parâmetros podem ser positivos ou negativos
+ */
+
 char* validarCadastroProduto(
     int codigo,
     char nome[],
