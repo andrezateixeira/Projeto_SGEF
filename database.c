@@ -50,7 +50,8 @@ int stub_quantidade_invalido(int quantidade) {
 
 int stub_categoria_invalido(char categoria) {
     if (categoria == 'A' || categoria == 'C' || categoria == 'E' || categoria == 'H' || categoria == 'M') {
-        return 0;  
+        return 0;
+	}	
     return 1;
 }
 
