@@ -19,6 +19,7 @@ int stub_codigo_duplicado(int codigo);
 int stub_nome_invalido(char nome[]);
 int stub_preco_invalido(float preco);
 int stub_quantidade_invalido(int quantidade);
+int stub_categoria_invalido(char categoria);
 
 #endif
 
