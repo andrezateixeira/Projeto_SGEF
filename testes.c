@@ -3,23 +3,22 @@
 #include "minunit.h"
 #include "functions.h"
 #include "database.h"
+#include "database_stub.h"
 
-MU_TEST(test_validar_codigo_negativo) {
-    int resultado = stub_codigo_invalido(-5);
+MU_TEST(test_codigo_negativo) {
+    Database db = criarDatabaseStubVazio();
+    Produto p = {-5, "Arroz", 10, 1, 'A'};
+
+    char *resultado = validarCadastroProduto(&db, p);
+
     mu_assert(
-        resultado == 1,
-        "Erro: Codigo negativo deveria ser invalido"
-    );
-    
-    resultado = stub_codigo_invalido(10);
-    mu_assert(
-        resultado == 0,
-        "Erro: Codigo positivo deveria ser valido"
+        strcmp(resultado, "ERRO: codigo invalido") == 0,
+        "Codigo negativo deveria ser invalido"
     );
 }
 
 MU_TEST_SUITE(test_suite) {
-	MU_RUN_TEST(test_validar_codigo_negativo);
+	MU_RUN_TEST(test_codigo_negativo);
 }
 
 int casosTestes(void) {
