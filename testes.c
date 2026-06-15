@@ -17,8 +17,21 @@ MU_TEST(test_codigo_negativo) {
     );
 }
 
+MU_TEST(test_codigo_duplicado) {
+    Database db = criarDatabaseStubComUmProduto();
+    Produto p = {11, "Feijao", 10, 1, 'A'};
+
+    char *resultado = validarCadastroProduto(&db, p);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: codigo ja cadastrado") == 0,
+        "Codigo duplicado deveria ser rejeitado"
+    );
+}
+
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_codigo_negativo);
+	MU_RUN_TEST(test_codigo_duplicado);
 }
 
 int casosTestes(void) {
