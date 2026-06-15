@@ -26,3 +26,9 @@ int stub_codigo_invalido(int codigo) {
     if (codigo < 0) return 1;
     return 0;
 }
+
+int stub_codigo_duplicado(int codigo) {
+    if (codigo == 1) return 1;  
+    if (codigo == 2) return 1;  
+    return 0;
+}
