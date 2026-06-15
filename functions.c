@@ -5,6 +5,13 @@
 
 int i;
 
+/**
+ * @brief Busca o índice de um produto pelo código.
+ *
+ * @param codigo Código do produto a ser procurado.
+ *
+ * @return Índice do produto, ou -1 caso ele não seja encontrado.
+ */
 int buscarIndiceProduto(int codigo) {
     int i;
     for (i = 0; i < db.qtdProdutos; i++) {
@@ -15,6 +22,19 @@ int buscarIndiceProduto(int codigo) {
     return -1; 
 }
 
+/**
+ * @brief Valida os dados e realiza o cadastro de um novo produto.
+ *
+ * @param codigo Código do produto.
+ * @param nome Nome do produto.
+ * @param preco Preço do produto.
+ * @param quantidade Quantidade inicial em estoque.
+ * @param categoria Categoria do produto.
+ * @param codigos Vetor com os códigos dos produtos cadastrados.
+ * @param qtdProdutos Quantidade de produtos cadastrados.
+ *
+ * @return Mensagem informando se o cadastro foi realizado com sucesso ou se ocorreu algum erro.
+ */
 char* validarCadastroProduto(
     int codigo,
     char nome[],
@@ -60,6 +80,11 @@ char* validarCadastroProduto(
     return "Cadastro realizado com sucesso";
 }
 
+/**
+ * @brief Exibe todos os produtos cadastrados no sistema.
+ *
+ * @return Não retorna nenhum valor.
+ */
 void mostrarProdutos() {
     if(db.qtdProdutos == 0) {
         printf("Nenhum produto cadastrado.\n");
@@ -76,6 +101,13 @@ void mostrarProdutos() {
     }
 }
 
+/**
+ * @brief Exclui um produto do estoque.
+ *
+ * @param codigo Código do produto que será excluído.
+ *
+ * @return Mensagem indicando se a exclusão foi realizada com sucesso ou se ocorreu algum erro.
+ */
 char* excluirProduto(int codigo) {
     int i;
     int posicao = buscarIndiceProduto(codigo);
@@ -97,6 +129,14 @@ char* excluirProduto(int codigo) {
     return "Produto excluido com sucesso";
 }
 
+/**
+ * @brief Valida uma compra e atualiza a quantidade do produto em estoque.
+ *
+ * @param codigo Código do produto.
+ * @param quantidadeDesejada Quantidade que o cliente deseja comprar.
+ *
+ * @return Mensagem indicando se a compra foi realizada com sucesso ou se ocorreu algum erro.
+ */
 char* validarCompra(int codigo, int quantidadeDesejada) {
     int posicao = buscarIndiceProduto(codigo);
     
@@ -113,6 +153,14 @@ char* validarCompra(int codigo, int quantidadeDesejada) {
     return "Compra realizada com sucesso";
 }
 
+/**
+ * @brief Adiciona uma quantidade ao estoque de um produto.
+ *
+ * @param codigo Código do produto.
+ * @param quantidadeEntrada Quantidade que será adicionada ao estoque.
+ *
+ * @return Mensagem indicando se a entrada foi realizada com sucesso ou se ocorreu algum erro.
+ */
 char* entradaEstoque(int codigo, int quantidadeEntrada) {
     if (quantidadeEntrada <= 0) {
         return "ERRO: Quantidade invalida para entrada";

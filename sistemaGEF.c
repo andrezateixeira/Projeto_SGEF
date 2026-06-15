@@ -3,6 +3,16 @@
 #include "database.h"
 #include "functions.h"
 
+/**
+ * @brief Executa o Sistema de Gerenciamento de Estoque (SGEF).
+ *
+ * @details Exibe o menu principal do sistema, recebe a opção escolhida
+ * pelo usuário e executa operações como cadastro, listagem, exclusão,
+ * validação de compra, entrada em estoque e exibição de produtos com
+ * estoque baixo.
+ *
+ * @return Retorna 0 ao encerrar a execução do sistema.
+ */
 int sistemaGEF() {
     int opcao;
     int codigo, quantidade;
