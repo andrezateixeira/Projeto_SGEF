@@ -53,3 +53,11 @@ int stub_categoria_invalido(char categoria) {
         return 0;  
     return 1;
 }
+
+int stub_entrada_estoque(int codigo, int quantidadeEntrada) {
+    if (quantidadeEntrada <= 0) return 1;
+    if (codigo == 999) return 1; 
+    if (codigo < 0) return 1;     
+    
+    return 0;
+}
