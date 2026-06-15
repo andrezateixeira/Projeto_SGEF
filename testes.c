@@ -29,6 +29,19 @@ MU_TEST(test_codigo_duplicado) {
     );
 }
 
+MU_TEST(test_nome_invalido) {
+
+    Database db = criarDatabaseStubVazio();
+    Produto p = {1, "", 10, 1, 'E'};
+
+    char *resultado = validarCadastroProduto(&db, p);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: nome invalido") == 0,
+        "Nome vazio deveria ser rejeitado"
+    );
+}
+
 MU_TEST(test_preco_negativo) {
     Database db = criarDatabaseStubVazio();
     Produto p = {1, "Farinha", -10, 25, 'A'};
@@ -53,9 +66,12 @@ MU_TEST(test_quantidade_negativa) {
     );
 }
 
+
+
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_codigo_negativo);
 	MU_RUN_TEST(test_codigo_duplicado);
+	MU_RUN_TEST(test_nome_invalido);
 	MU_RUN_TEST(test_preco_negativo);
 	MU_RUN_TEST(test_quantidade_negativa);
 }
