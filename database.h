@@ -21,6 +21,7 @@ int stub_preco_invalido(float preco);
 int stub_quantidade_invalido(int quantidade);
 int stub_categoria_invalido(char categoria);
 int stub_entrada_estoque(int codigo, int quantidadeEntrada);
+int stub_mostrar_produtos_estoque_baixo(int limite);
 
 #endif
 

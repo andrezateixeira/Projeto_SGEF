@@ -61,3 +61,9 @@ int stub_entrada_estoque(int codigo, int quantidadeEntrada) {
     
     return 0;
 }
+
+int stub_mostrar_produtos_estoque_baixo(int limite) {
+    if (limite <= 0) return 0;     
+    if (limite > 10) return 1;     
+    return 0;                      
+}
