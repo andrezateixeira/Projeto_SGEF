@@ -27,23 +27,23 @@ MU_TEST(test_buscar_produto_inexistente){
 }
 
 MU_TEST(test_excluir_produto_existente){
-	Database db = CriarDatabaseStubComUmProduto();
+	Database db = criarDatabaseStubComUmProduto();
 	
-	int resultado = excluirProduto(&db, 11);
+	char* resultado = excluirProduto(&db, 11);
 	
 	mu_assert(
-	resultado == 0,
-	"Produto existente deveria ser excluido com sucesso"
+		strcmp(resultado, "Produto excluido com sucesso") == 0,
+		"Produto existente deveria ser excluido com sucesso"
 	);
 }
 
 MU_TEST(test_excluir_produto_inexistente) {
     Database db = criarDatabaseStubComUmProduto();
     
-    int resultado = excluirProduto(&db, 99);
+    char* resultado = excluirProduto(&db, 99);
     
     mu_assert(
-        resultado == -1,
+        strcmp(resultado, "ERRO: Produto nao encontrado") == 0,
         "Tentativa de excluir produto inexistente deveria retornar nao encontrado"
     );
 }
