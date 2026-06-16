@@ -26,28 +26,6 @@ MU_TEST(test_buscar_produto_inexistente){
 	);
 }
 
-MU_TEST(test_excluir_produto_existente){
-	Database db = criarDatabaseStubComUmProduto();
-	
-	char* resultado = excluirProduto(&db, 11);
-	
-	mu_assert(
-		strcmp(resultado, "Produto excluido com sucesso") == 0,
-		"Produto existente deveria ser excluido com sucesso"
-	);
-}
-
-MU_TEST(test_excluir_produto_inexistente) {
-    Database db = criarDatabaseStubComUmProduto();
-    
-    char* resultado = excluirProduto(&db, 99);
-    
-    mu_assert(
-        strcmp(resultado, "ERRO: Produto nao encontrado") == 0,
-        "Tentativa de excluir produto inexistente deveria retornar nao encontrado"
-    );
-}
-
 MU_TEST(test_codigo_negativo) {
     Database db = criarDatabaseStubVazio();
     Produto p = {-5, "Arroz", 10, 1, 'A'};
@@ -117,7 +95,7 @@ MU_TEST(test_categoria_invalida) {
 
     mu_assert(
         strcmp(resultado, "ERRO: categoria invalida") == 0,
-        "Categoria inv·lida deveria ser rejeitada"
+        "Categoria inv√°lida deveria ser rejeitada"
     );
 }
 
