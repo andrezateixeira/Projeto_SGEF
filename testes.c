@@ -180,6 +180,18 @@ MU_TEST(test_entrada_estoque_sucesso) {
     );
 }
 
+MU_TEST(test_entrada_estoque_quantidade_invalida) {
+    Database db = criarDatabaseStubComUmProduto();
+
+    char *resultado = entradaEstoque(&db, 11, -5);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: Quantidade invalida para entrada") == 0,
+        "Quantidade negativa/zero deveria retornar erro"
+    );
+}
+
+
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
 	MU_RUN_TEST(test_buscar_produto_inexistente);
@@ -196,6 +208,7 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_compra_quantidade_insuficiente);
 	MU_RUN_TEST(test_compra_produto_inexistente);
 	MU_RUN_TEST(test_entrada_estoque_sucesso);
+	MU_RUN_TEST(test_entrada_estoque_quantidade_invalida);
 }
 
 int casosTestes(void) {
