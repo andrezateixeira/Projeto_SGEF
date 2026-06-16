@@ -191,6 +191,17 @@ MU_TEST(test_entrada_estoque_quantidade_invalida) {
     );
 }
 
+MU_TEST(test_entrada_estoque_produto_inexistente) {
+    Database db = criarDatabaseStubComUmProduto();
+
+    char *resultado = entradaEstoque(&db, 99, 10);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: Produto nao encontrado") == 0,
+        "Produto inexistente deveria retornar nao encontrado"
+    );
+}
+
 
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
@@ -209,6 +220,7 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_compra_produto_inexistente);
 	MU_RUN_TEST(test_entrada_estoque_sucesso);
 	MU_RUN_TEST(test_entrada_estoque_quantidade_invalida);
+	MU_RUN_TEST(test_entrada_estoque_produto_inexistente);
 }
 
 int casosTestes(void) {
