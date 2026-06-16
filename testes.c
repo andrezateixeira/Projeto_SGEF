@@ -157,6 +157,17 @@ MU_TEST(test_compra_quantidade_insuficiente) {
     );
 }
 
+MU_TEST(test_compra_produto_inexistente) {
+
+    Database db = criarDatabaseStubComUmProduto();
+
+    int resultado = realizarCompra(&db, 99, 1);
+
+    mu_assert(
+        resultado == -1,
+        "Produto inexistente deveria retornar nao encontrado"
+    );
+}
 
 
 
@@ -173,7 +184,8 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_categoria_invalida);
 	MU_RUN_TEST(test_cadastro_valido);
 	MU_RUN_TEST(test_compra_sucesso);
-	MU_RUN_TEST(test_compra_quantidade_insuficiente)
+	MU_RUN_TEST(test_compra_quantidade_insuficiente);
+	MU_RUN_TEST(test_compra_produto_inexistente);
 }
 
 int casosTestes(void) {
