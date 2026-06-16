@@ -202,6 +202,18 @@ MU_TEST(test_entrada_estoque_produto_inexistente) {
     );
 }
 
+MU_TEST(test_mostrar_estoque_baixo) {
+    Database db = criarDatabaseStubComUmProduto();
+
+    db.produtos[0].quantidade = 3;
+
+    mostrarProdutosEstoqueBaixo(&db, 5);
+
+    mu_assert(
+        db.produtos[0].quantidade < 5,
+        "Produto deveria estar com estoque baixo"
+    );
+}
 
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
@@ -221,6 +233,7 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_entrada_estoque_sucesso);
 	MU_RUN_TEST(test_entrada_estoque_quantidade_invalida);
 	MU_RUN_TEST(test_entrada_estoque_produto_inexistente);
+	MU_RUN_TEST(test_mostrar_estoque_baixo);
 }
 
 int casosTestes(void) {
