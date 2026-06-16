@@ -111,14 +111,36 @@ MU_TEST(test_cadastro_valido) {
     );
 }
 
+MU_TEST(test_excluir_produto_existente){
+	Database db = criarDatabaseStubComUmProduto();
+
+	char* resultado = excluirProduto(&db, 11);
+
+	mu_assert(
+		strcmp(resultado, "Produto excluido com sucesso") == 0,
+		"Produto existente deveria ser excluido com sucesso"
+	);
+}
+
+MU_TEST(test_excluir_produto_inexistente) {
+    Database db = criarDatabaseStubComUmProduto();
+
+    char* resultado = excluirProduto(&db, 99);
+
+    mu_assert(
+        strcmp(resultado, "ERRO: Produto nao encontrado") == 0,
+        "Tentativa de excluir produto inexistente deveria retornar nao encontrado"
+    );
+}
+
 MU_TEST(test_compra_sucesso) { 
 
     Database db = criarDatabaseStubComUmProduto();
 
-    int resultado = realizarCompra(&db, 11, 2);
+    int resultado = validarCompra(&db, 11, 2);
 
     mu_assert(
-        resultado == 0,
+    	strcmp(resultado, "Compra realizada com sucesso") == 0,
         "Compra deveria ser realizada com sucesso"
     );
 }
@@ -127,10 +149,10 @@ MU_TEST(test_compra_quantidade_insuficiente) {
 
     Database db = criarDatabaseStubComUmProduto();
 
-    int resultado = realizarCompra(&db, 11, 999);
+    int resultado = validarCompra(&db, 11, 999);
 
     mu_assert(
-        resultado == 1,
+    	strcmp(resultado, "ERRO: Quantidade insuficiente em estoque") == 0,
         "Compra com quantidade insuficiente deveria retornar erro"
     );
 }
@@ -139,15 +161,13 @@ MU_TEST(test_compra_produto_inexistente) {
 
     Database db = criarDatabaseStubComUmProduto();
 
-    int resultado = realizarCompra(&db, 99, 1);
+    int resultado = validarCompra(&db, 99, 1);
 
     mu_assert(
-        resultado == -1,
+        strcmp(resultado, "ERRO: Produto nao encontrado") == 0,
         "Produto inexistente deveria retornar nao encontrado"
     );
 }
-
-
 
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
