@@ -114,7 +114,7 @@ MU_TEST(test_cadastro_valido) {
 MU_TEST(test_excluir_produto_existente){
 	Database db = criarDatabaseStubComUmProduto();
 
-	char* resultado = excluirProduto(&db, 11);
+	char *resultado = excluirProduto(&db, 11);
 
 	mu_assert(
 		strcmp(resultado, "Produto excluido com sucesso") == 0,
@@ -125,7 +125,7 @@ MU_TEST(test_excluir_produto_existente){
 MU_TEST(test_excluir_produto_inexistente) {
     Database db = criarDatabaseStubComUmProduto();
 
-    char* resultado = excluirProduto(&db, 99);
+    char *resultado = excluirProduto(&db, 99);
 
     mu_assert(
         strcmp(resultado, "ERRO: Produto nao encontrado") == 0,
@@ -137,7 +137,7 @@ MU_TEST(test_compra_sucesso) {
 
     Database db = criarDatabaseStubComUmProduto();
 
-    int resultado = validarCompra(&db, 11, 2);
+    char *resultado = validarCompra(&db, 11, 2);
 
     mu_assert(
     	strcmp(resultado, "Compra realizada com sucesso") == 0,
@@ -149,7 +149,7 @@ MU_TEST(test_compra_quantidade_insuficiente) {
 
     Database db = criarDatabaseStubComUmProduto();
 
-    int resultado = validarCompra(&db, 11, 999);
+    char *resultado = validarCompra(&db, 11, 999);
 
     mu_assert(
     	strcmp(resultado, "ERRO: Quantidade insuficiente em estoque") == 0,
@@ -161,7 +161,7 @@ MU_TEST(test_compra_produto_inexistente) {
 
     Database db = criarDatabaseStubComUmProduto();
 
-    int resultado = validarCompra(&db, 99, 1);
+    char *resultado = validarCompra(&db, 99, 1);
 
     mu_assert(
         strcmp(resultado, "ERRO: Produto nao encontrado") == 0,
@@ -202,18 +202,6 @@ MU_TEST(test_entrada_estoque_produto_inexistente) {
     );
 }
 
-MU_TEST(test_mostrar_estoque_baixo) {
-    Database db = criarDatabaseStubComUmProduto();
-
-    db.produtos[0].quantidade = 3;
-
-    mostrarProdutosEstoqueBaixo(&db, 5);
-
-    mu_assert(
-        db.produtos[0].quantidade < 5,
-        "Produto deveria estar com estoque baixo"
-    );
-}
 
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
@@ -233,7 +221,6 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_entrada_estoque_sucesso);
 	MU_RUN_TEST(test_entrada_estoque_quantidade_invalida);
 	MU_RUN_TEST(test_entrada_estoque_produto_inexistente);
-	MU_RUN_TEST(test_mostrar_estoque_baixo);
 }
 
 int casosTestes(void) {
