@@ -145,6 +145,20 @@ MU_TEST(test_compra_sucesso) {
     );
 }
 
+MU_TEST(test_compra_quantidade_insuficiente) {
+
+    Database db = criarDatabaseStubComUmProduto();
+
+    int resultado = realizarCompra(&db, 11, 999);
+
+    mu_assert(
+        resultado == 1,
+        "Compra com quantidade insuficiente deveria retornar erro"
+    );
+}
+
+
+
 
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
@@ -159,6 +173,7 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_categoria_invalida);
 	MU_RUN_TEST(test_cadastro_valido);
 	MU_RUN_TEST(test_compra_sucesso);
+	MU_RUN_TEST(test_compra_quantidade_insuficiente)
 }
 
 int casosTestes(void) {
