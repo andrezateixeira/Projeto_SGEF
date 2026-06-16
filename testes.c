@@ -133,6 +133,19 @@ MU_TEST(test_cadastro_valido) {
     );
 }
 
+MU_TEST(test_compra_sucesso) { 
+
+    Database db = criarDatabaseStubComUmProduto();
+
+    int resultado = realizarCompra(&db, 11, 2);
+
+    mu_assert(
+        resultado == 0,
+        "Compra deveria ser realizada com sucesso"
+    );
+}
+
+
 MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_buscar_produto_existente);
 	MU_RUN_TEST(test_buscar_produto_inexistente);
@@ -145,6 +158,7 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_quantidade_negativa);
 	MU_RUN_TEST(test_categoria_invalida);
 	MU_RUN_TEST(test_cadastro_valido);
+	MU_RUN_TEST(test_compra_sucesso);
 }
 
 int casosTestes(void) {
